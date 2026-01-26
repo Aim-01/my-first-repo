@@ -1,0 +1,16 @@
+// Страница с сообщением об успешном заказе
+import { expect } from "playwright/test";
+
+export class CheckoutCompletePage {
+    constructor(page) {
+
+        this.page = page;
+        this.completeMessage = page.locator('[data-test="complete-header"]'); 
+        this.backHomeButton = page.locator('[data-test="back-to-products"]');
+    }
+    async getCompletionMessage(){
+        await expect(this.completeMessage).toHaveText('Thank you for your order!');
+    }
+
+
+}
