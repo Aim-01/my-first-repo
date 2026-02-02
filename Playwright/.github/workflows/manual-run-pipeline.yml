@@ -1,45 +1,53 @@
-name: Manual Test Run
+name: Manual Test Run  # Название пайплайна
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Запуск вручную через кнопку Run workflow
 
 jobs:
-  run-tests:
-    runs-on: ubuntu-latest
+  run-tests:          # Название job
+    runs-on: ubuntu-latest  # ОС для запуска
 
     steps:
+      # Этап 1. Скачиваем код из репозитория
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      # Этап 2. Устанавливаем Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
 
+      # Этап 3. Устанавливаем зависимости
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
+      # Этап 4. Устанавливаем браузеры Playwright
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      # Этап 5. Запуск UI тестов
       - name: Run UI tests
-        run: npm run tests:ui
+        run: npm run tests:ui -- --reporter=html --output=playwright-report-ui
 
+      # Этап 6. Запуск API тестов
       - name: Run API tests
-        run: npm run tests:api
+        run: npm run tests:api -- --reporter=html --output=playwright-report-api
 
+      # Этап 7. Загрузка отчёта UI тестов
       - name: Upload UI test report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-ui
-          path: playwright-report/
-          retention-days: 6
+          path: playwright-report-ui/
+          retention-days: 7
 
+      # Этап 8. Загрузка отчёта API тестов
       - name: Upload API test report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-api
-          path: playwright-report/
-          retention-days: 6
+          path: playwright-report-api/
+          retention-days: 7
