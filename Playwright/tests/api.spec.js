@@ -5,7 +5,7 @@ test.describe('API-тесты для Restful-booker', () => {
 
   const baseURL = 'https://restful-booker.herokuapp.com';
 
-  test('Создание нового бронирования (POST /booking)', async ({ request }) => {
+  test('Создание нового бронирования (POST /booking) @api', async ({ request }) => {
 
     // Данные для создания бронирования
     const bookingData = {
@@ -57,7 +57,7 @@ test.describe('API-тесты для Restful-booker', () => {
 
   const baseURL = 'https://restful-booker.herokuapp.com';
 
-  test('Получение информации о бронировании (GET /booking/{id})', async ({ request }) => {
+  test('Получение информации о бронировании (GET /booking/{id}) @api', async ({ request }) => {
 
     // ШАГ 1. Создаём бронирование, чтобы получить bookingid
     const bookingData = {
@@ -114,7 +114,7 @@ test.describe('API-тесты для Restful-booker', () => {
 
   const baseURL = 'https://restful-booker.herokuapp.com';
 
-  test('Обновление бронирования (PUT /booking/{id})', async ({ request }) => {
+  test('Обновление бронирования (PUT /booking/{id}) @api', async ({ request }) => {
 
     // ШАГ 1. Получаем токен авторизации
     const authResponse = await request.post(`${baseURL}/auth`, {
@@ -207,7 +207,7 @@ test.describe('API-тесты для Restful-booker', () => {
 
   const baseURL = 'https://restful-booker.herokuapp.com';
 
-  test('Удаление бронирования (DELETE /booking/{id})', async ({ request }) => {
+  test('Удаление бронирования (DELETE /booking/{id}) @api', async ({ request }) => {
 
     //  ШАГ 1. Получаем токен авторизации 
     const authResponse = await request.post(`${baseURL}/auth`, {

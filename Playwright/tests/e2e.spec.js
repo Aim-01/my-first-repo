@@ -6,7 +6,7 @@ import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage';
 import { CheckoutStepTwoPage } from '../pages/CheckoutStepTwoPage';
 import { CheckoutCompletePage } from '../pages/CheckoutCompletePage';
 
-test('e2e тест - покупка самого дорогого товара', async ({ page }) => {
+test('e2e тест - покупка самого дорогого товара @ui', async ({ page }) => {
 
     // 1. Открыть страницу логина
     const loginPage = new LoginPage(page);
