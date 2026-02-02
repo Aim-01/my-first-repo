@@ -34,7 +34,7 @@ jobs:
         with:
           name: playwright-report-ui
           path: playwright-report/
-          retention-days: 7
+          retention-days: 6
 
       - name: Upload API test report
         if: always()
@@ -42,4 +42,4 @@ jobs:
         with:
           name: playwright-report-api
           path: playwright-report/
-          retention-days: 7
+          retention-days: 6
