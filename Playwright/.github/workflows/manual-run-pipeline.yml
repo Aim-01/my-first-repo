@@ -14,7 +14,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
@@ -34,7 +34,6 @@ jobs:
         with:
           name: playwright-report-ui
           path: playwright-report-ui/
-          retention-days: 7
 
       - name: Upload API test report
         if: always()
@@ -42,4 +41,3 @@ jobs:
         with:
           name: playwright-report-api
           path: playwright-report-api/
-          retention-days: 7
