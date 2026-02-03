@@ -27,12 +27,12 @@ jobs:
         run: npx playwright install --with-deps
 
       # Этап 5. Запуск UI тестов
-      - name: Run UI tests
-        run: npm run tests:ui -- --reporter=html --output=playwright-report-ui
+      - name: Run UI tests 
+        run: npm run tests:ui -- --reporter=html,outputFolder=playwright-report-ui
 
       # Этап 6. Запуск API тестов
       - name: Run API tests
-        run: npm run tests:api -- --reporter=html --output=playwright-report-api
+        run: npm run tests:api -- --reporter=html,outputFolder=playwright-report-api
 
       # Этап 7. Загрузка отчёта UI тестов
       - name: Upload UI test report
