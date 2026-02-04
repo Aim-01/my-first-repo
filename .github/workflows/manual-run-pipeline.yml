@@ -28,7 +28,7 @@ jobs:
 
       # Этап 5. Запуск UI тестов
       - name: Run UI tests
-        run: npm run tests:ui -- --reporter=html --output=playwright-report
+        run: npm run tests:ui -- --reporter=html --output=playwright-report-ui
 
       # Этап 6. Запуск API тестов
       - name: Run API tests
